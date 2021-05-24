@@ -1,0 +1,34 @@
+{
+  "name": "fort-shop",
+  "version": "1.0.0",
+  "description": "Generates the Fortnite Item Shop in an image similar to the In-Game design.",
+  "main": "test.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Im2rnado/Fort-Shop.git"
+  },
+  "keywords": [
+    "fortnite",
+    "im2rnado",
+    "fortniteshop",
+    "shop",
+    "fn",
+    "fnbr"
+  ],
+  "author": "Im2rnado",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Im2rnado/Fort-Shop/issues"
+  },
+  "homepage": "https://github.com/Im2rnado/Fort-Shop#readme",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "canvas": "^2.8.0",
+    "colors": "^1.4.0",
+    "moment": "^2.29.1"
+  }
+}
