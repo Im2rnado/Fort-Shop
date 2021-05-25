@@ -15,7 +15,10 @@ Fort-Shop is a unique project which generates the current Fortnite Item Shop int
 - `watermark`: Replace with your Support-A-Creator code or watermark, you may leave it blank if you wish.
 
 3. Run `start.bat` 
-4. Voila, you are now done ✔️
+4. Voila, you are now done 
+
+## Support
+If you need any help, encounter any issues, or just have a suggestion, feel free to join our discord server at: discord.gg/carbide or open an issue in this repository.
 
 ## Credits
 - Item Shop data provided by [FortniteAPI.io](https://fortniteapi.io/)
