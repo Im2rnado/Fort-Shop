@@ -1,5 +1,5 @@
 # Fort-Shop
-<img align="right" src="https://i.imgur.com/mtaTwek.jpeg" width="650px" draggable="false">
+<img align="right" src="https://i.imgur.com/mtaTwek.jpeg" width="350px" draggable="false">
 Fort-Shop is a unique project which generates the current Fortnite Item Shop into a stylized image, similar to the new In-Game design (referred to as Cataba).
 
 ## Requirements
