@@ -18,7 +18,7 @@ Fort-Shop is a unique project which generates the current Fortnite Item Shop int
 4. Voila, you are now done 
 
 ## Support
-If you need any help, encounter any issues, or just have a suggestion, feel free to join our discord server at: discord.gg/carbide or open an issue in this repository.
+If you need any help, encounter any issues, or just have a suggestion, feel free to open an issue in this repository or contact me on Discord (tornado#9999).
 
 ## Credits
 - Item Shop data provided by [FortniteAPI.io](https://fortniteapi.io/)
