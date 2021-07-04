@@ -15,8 +15,6 @@ module.exports = {
 	 */
 	async generateShop(shop, watermark) {
 		const beforeFinish = Date.now();
-		console.log("[Fort-Shop] Made by Im2rnado. For support, join discord.gg/carbide".rainbow);
-
 		// Font
 		registerFont("./assets/fonts/BurbankBigRegularBlack.otf", {
 			family: "Burbank Big Regular",
@@ -57,7 +55,7 @@ module.exports = {
 		let featuredX = 150;
 		let featuredY = 900;
 		let rendered = 0;
-		let below = "no";
+		let below = false;
 
 		// Background
 		const background = await loadImage("./assets/background.png");
@@ -103,36 +101,36 @@ module.exports = {
 				let ov;
 				let imgWidth = 0;
 				let imgHeight = 0;
-				let wasBelow = "no";
+				let wasBelow = false;
 
 				// Get the image width/height
 				if (item.size === "DoubleWide") {
 					imgWidth = 1060;
 					imgHeight = 1000;
-					below = "no";
-					wasBelow = "no";
+					below = false;
+					wasBelow = false;
 				} else if (item.size === "Small") {
 					imgWidth = 500;
 					imgHeight = 480;
-					if (below === "yes") {
+					if (below === true) {
 						featuredX = featuredX - (imgWidth + 60);
 						featuredY = featuredY + 520;
-						below = "no";
-						wasBelow = "yes";
+						below = false;
+						wasBelow = true;
 					} else {
-						below = "yes";
-						wasBelow = "no";
+						below = true;
+						wasBelow = false;
 					}
 				} else if (item.size === "Normal") {
 					imgWidth = 500;
 					imgHeight = 1000;
-					below = "no";
-					wasBelow = "no";
+					below = false;
+					wasBelow = false;
 				} else {
 					imgWidth = 500;
 					imgHeight = 1000;
-					below = "no";
-					wasBelow = "no";
+					below = false;
+					wasBelow = false;
 				}
 
 				// Load Overlay
@@ -210,7 +208,7 @@ module.exports = {
 				}
 
 				// Return to the default height
-				if (wasBelow === "yes") {
+				if (wasBelow === true) {
 					featuredY = featuredY - 520;
 				}
 
