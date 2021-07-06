@@ -15,7 +15,8 @@ module.exports = {
 	 */
 	async generateShop(shop, watermark) {
 		const beforeFinish = Date.now();
-		console.log("[Fort-Shop] Made by Im2rnado. For support, join discord.gg/carbide".rainbow);
+		
+		console.log("[Fort-Shop] Made by Im2rnado. For support, contact tornado#9999 on Discord".rainbow);
 
 		// Font
 		registerFont("./assets/fonts/BurbankBigRegularBlack.otf", {
@@ -57,7 +58,7 @@ module.exports = {
 		let featuredX = 150;
 		let featuredY = 900;
 		let rendered = 0;
-		let below = "no";
+		let below = false;
 
 		// Background
 		const background = await loadImage("./assets/background.png");
@@ -67,12 +68,12 @@ module.exports = {
 
 		// Item Shop
 		ctx.fillStyle = "#ffffff";
-		ctx.font = "italic 300px Burbank Big Rg Bk";
+		ctx.font = "italic 300px \"Burbank Big Rg Bk\"";
 		ctx.textAlign = "left";
 		ctx.fillText("Item Shop", 170, 500);
 
 		// Date
-		ctx.font = "italic 125px Burbank Big Rg Bk";
+		ctx.font = "italic 125px \"Burbank Big Rg Bk\"";
 		ctx.textAlign = "right";
 		ctx.fillText(date, canvas.width - 100, 400);
 
@@ -88,7 +89,7 @@ module.exports = {
 				console.log(`[SECTIONS] Drawing ${shop[i].name} Section`.magenta);
 
 				ctx.fillStyle = "#ffffff";
-				ctx.font = "italic 100px Burbank Big Rg Bk";
+				ctx.font = "italic 100px \"Burbank Big Rg Bk\"";
 				ctx.textAlign = "left";
 				ctx.fillText(shop[i].name, 185, featuredY - 60);
 				ctx.drawImage(await loadImage("./assets/clock.png"), ctx.measureText(shop[i].name).width + 200, featuredY - 160, 125, 125);
@@ -103,36 +104,36 @@ module.exports = {
 				let ov;
 				let imgWidth = 0;
 				let imgHeight = 0;
-				let wasBelow = "no";
+				let wasBelow = false;
 
 				// Get the image width/height
 				if (item.size === "DoubleWide") {
 					imgWidth = 1060;
 					imgHeight = 1000;
-					below = "no";
-					wasBelow = "no";
+					below = false;
+					wasBelow = false;
 				} else if (item.size === "Small") {
 					imgWidth = 500;
 					imgHeight = 480;
-					if (below === "yes") {
+					if (below === true) {
 						featuredX = featuredX - (imgWidth + 60);
 						featuredY = featuredY + 520;
-						below = "no";
-						wasBelow = "yes";
+						below = false;
+						wasBelow = true;
 					} else {
-						below = "yes";
-						wasBelow = "no";
+						below = true;
+						wasBelow = false;
 					}
 				} else if (item.size === "Normal") {
 					imgWidth = 500;
 					imgHeight = 1000;
-					below = "no";
-					wasBelow = "no";
+					below = false;
+					wasBelow = false;
 				} else {
 					imgWidth = 500;
 					imgHeight = 1000;
-					below = "no";
-					wasBelow = "no";
+					below = false;
+					wasBelow = false;
 				}
 
 				// Load Overlay
@@ -177,12 +178,12 @@ module.exports = {
 				// Load & Draw Name
 				ctx.fillStyle = "#ffffff";
 				let fontSize = 55;
-				ctx.font = "italic " + fontSize + "px Burbank Big Rg Bk";
+				ctx.font = "italic " + fontSize + "px \"Burbank Big Rg Bk\"";
 
 				let measure = ctx.measureText(item.name.toUpperCase()).width;
 				while (measure > (imgWidth - 40)) {
 					fontSize = fontSize - 0.6;
-					ctx.font = "italic " + fontSize + "px Burbank Big Rg Bk";
+					ctx.font = "italic " + fontSize + "px \"Burbank Big Rg Bk\"";
 					measure = ctx.measureText(item.name.toUpperCase()).width;
 				}
 				ctx.textAlign = "center";
@@ -190,7 +191,7 @@ module.exports = {
 
 				// Load & Draw Price
 				ctx.fillStyle = "#d3d3d3";
-				ctx.font = "30px Burbank Big Rg Bk";
+				ctx.font = "30px \"Burbank Big Rg Bk\"";
 				ctx.textAlign = "right";
 				ctx.fillText(item.price.finalPrice.toLocaleString(), featuredX + (imgWidth - (500 / 6)), featuredY + (imgHeight - (500 / 45)));
 
@@ -199,14 +200,18 @@ module.exports = {
 				// Gameplay Tags
 				if (item.effects && item.effects.length) {
 					try {
-						ctx.drawImage(await loadImage(`./assets/gptags/${item.effects[0].split(".").pop()}EF.png`), featuredX + (imgWidth - 100), featuredY + (imgHeight - 220), 80, 80);
+						if (item.effects[0].split(".").pop() == "BuiltInEmote") {
+							ctx.drawImage(await loadImage(`./assets/gptags/BuiltInContentEF.png`), featuredX + (imgWidth - 100), featuredY + (imgHeight - 220), 80, 80);
+						} else {
+							ctx.drawImage(await loadImage(`./assets/gptags/${item.effects[0].split(".").pop()}EF.png`), featuredX + (imgWidth - 100), featuredY + (imgHeight - 220), 80, 80);
+						};
 					} catch {
 						console.log(`Could not load Gameplay Tag ${item.effects[0].split(".").pop()}`.red);
 					}
 				}
 
 				// Return to the default height
-				if (wasBelow === "yes") {
+				if (wasBelow === true) {
 					featuredY = featuredY - 520;
 				}
 
